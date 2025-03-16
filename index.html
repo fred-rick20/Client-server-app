@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client-Server App</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Client-Server Communication</h1>
+        <button id="sendRequest">Send Request</button>
+        <p id="response"></p>
+    </div>
+    
+    <script>
+        document.getElementById("sendRequest").addEventListener("click", function() {
+            fetch('http://127.0.0.1:5000/api') // Connecting to Flask backend
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("response").innerText = "Server Response: " + data;
+                })
+                .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>
